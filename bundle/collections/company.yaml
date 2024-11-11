@@ -1,0 +1,5 @@
+name: company
+label: Company
+type: EXTERNAL
+pluralLabel: Companies
+integration: zefix

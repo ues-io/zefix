@@ -1,0 +1,4 @@
+name: company
+public: true
+type: LOAD
+dialect: TYPESCRIPT
