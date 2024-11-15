@@ -3,11 +3,14 @@ import { LoadBotApi } from "@uesio/bots"
 type ZefixRequest = {
 	name: string
 }
-
+	// These are the available fields from the full response body
 type ZefixCompany = {
 	name: string
 	chid: string
 	canton: string
+	legalSeat: string
+	status: string
+	purpose: string
 }
 
 type ZefixResponse = ZefixCompany[]
@@ -62,10 +65,14 @@ export default function company(bot: LoadBotApi) {
 		body,
 	})
 
+	// Here we match the retrived data records to the collection data
 	response.body.forEach((record) => {
 		bot.addRecord({
 			["name"]: record.name,
 			["canton"]: record.canton,
+			["legalseat"]: record.legalSeat,
+			["status"]: record.status,
+			["purpose"]: record.purpose,
 			["uesio/core.id"]: record.chid,
 		})
 	})

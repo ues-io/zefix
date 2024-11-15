@@ -12,10 +12,24 @@ definition:
         uesio/core.createdby:
         uesio/core.createdat:
         uesio/core.owner:
+        demo/zefix.legalseat: {}
+        demo/zefix.status: {}
+        demo/zefix.purpose: {}
       conditions:
         - field: uesio/core.id
           valueSource: PARAM
           param: recordid
+    inputs:
+      viewOnly: true
+      fields:
+        input:
+          type: TEXT
+        output:
+          type: LONGTEXT
+          label: output
+      init:
+        query: false
+        create: true
   # Components determine the layout and composition of your view
   components:
     - uesio/io.viewlayout:
@@ -49,6 +63,7 @@ definition:
                     main:
                       - uesio/appkit.form_detail:
                           wire: company
+                          avataricon: domain
                           content:
                             - uesio/io.box:
                                 uesio.variant: uesio/appkit.primarysection
@@ -57,7 +72,55 @@ definition:
                                       fieldId: demo/zefix.name
                                   - uesio/io.field:
                                       fieldId: demo/zefix.canton
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.legalseat
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.status
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.purpose
                     left:
+                      - uesio/io.box:
+                          components:
+                            - uesio/io.list:
+                                mode: EDIT
+                                wire: inputs
+                                uesio.id: inputList
+                                components:
+                                  - uesio/io.field:
+                                      fieldId: input
+                                      label: Ask
+                                      labelPosition: none
+                                      placeholder: Ask Claude AI
+                                  - uesio/io.button:
+                                      text: Ask
+                                      icon: autofps_select
+                                      uesio.variant: uesio/appkit.note
+                                      iconPlacement: start
+                                      signals:
+                                        - signal: integration/RUN_ACTION
+                                          stepId: ask
+                                          integrationType: uesio/aikit.bedrock
+                                          integration: uesio/aikit.bedrock
+                                          action: uesio/aikit.invokemodel
+                                          params:
+                                            model: anthropic.claude-3-haiku-20240307-v1:0
+                                            input: "${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose}"
+                                            temperature: null
+                                            top_k: null
+                                            top_p: null
+                                            max_tokens_to_sample: null
+                                        - signal: wire/UPDATE_FIELDS
+                                          wire: inputs
+                                          fields:
+                                            - field: output
+                                              value: $SignalOutput{[ask][0.text]}
+                                  - uesio/io.field:
+                                      fieldId: output
+                                      label: Answer
+                                      labelPosition: top
+                                      placeholder: ""
+                                      longtext:
+                                        rows: 20
           - uesio/io.box:
               uesio.variant: uesio/io.section
               uesio.display:
@@ -66,6 +129,7 @@ definition:
               components:
                 - uesio/io.text:
                     text: Select a record
+        right: []
   params:
     recordid:
       type: RECORD

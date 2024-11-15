@@ -6,8 +6,19 @@ definition:
       collection: demo/zefix.company
       fields:
         demo/zefix.name:
-        demo/zefix.canton:
-  # Components determine the layout and composition of your view
+        demo/zefix.canton: # Components determine the layout and composition of your view
+        demo/zefix.legalseat: {}
+        demo/zefix.status: null
+      events: []
+    history:
+      fields:
+        demo/zefix.name: {}
+      collection: demo/zefix.history
+      batchsize: 200
+      init:
+        query: true
+        create: false
+      events: []
   components:
     - uesio/io.viewlayout:
         uesio.variant: demo/zefix.default
@@ -33,6 +44,8 @@ definition:
                     uesio.variant: uesio/appkit.main
                     wire: company
                     placeholder: Search $Collection{company:pluralLabel}
+                    searchFields:
+                      - demo/zefix.name
               content:
                 - uesio/io.table:
                     uesio.variant: uesio/appkit.main
@@ -44,13 +57,32 @@ definition:
                         uesio.display:
                           - type: recordIsNotNew
                         signals:
+                          - signal: wire/CREATE_RECORD
+                            wire: history
+                          - signal: wire/UPDATE_FIELDS
+                            wire: history
+                            fields:
+                              - field: demo/zefix.name
+                                value: ${company:name}
+                          - signal: wire/SAVE
+                            wires:
+                              - history
                           - signal: route/NAVIGATE_TO_ASSIGNMENT
                             viewtype: detail
-                            recordid: ${uesio/core.id}
+                            recordid: ${company:uesio/core.id}
                             collection: demo/zefix.company
                     columns:
                       - field: demo/zefix.name
-                      - field: demo/zefix.canton
+                      - field: demo/zefix.legalseat
+                      - field: demo/zefix.status
                     uesio.id: companyTable
                     wire: company
                     pagesize: 10
+                    mode: READ
+                - uesio/io.table:
+                    wire: history
+                    columns:
+                      - field: demo/zefix.name
+                    mode: READ
+                    rownumbers: true
+                    uesio.id: history_audit
