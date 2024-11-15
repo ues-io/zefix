@@ -1,0 +1,54 @@
+name: company_new
+definition:
+  # Wires connect to data in collections
+  wires:
+    company:
+      collection: demo/zefix.company
+      fields:
+        demo/zefix.name:
+        demo/zefix.canton:
+        uesio/core.updatedby:
+        uesio/core.updatedat:
+        uesio/core.createdby:
+        uesio/core.createdat:
+        uesio/core.owner:
+      init:
+        create: true
+        query: false
+  # Components determine the layout and composition of your view
+  components:
+    - uesio/io.viewlayout:
+        uesio.variant: demo/zefix.default
+        left:
+          - uesio/core.view:
+              view: demo/zefix.leftnav
+              slots:
+                crumbs:
+                  - uesio/io.group:
+                      uesio.variant: uesio/appkit.breadcrumbs
+                      components:
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: $Collection{company:pluralLabel}
+                            icon: $Collection{company:icon}
+                            signals:
+                              - signal: route/NAVIGATE_TO_ASSIGNMENT
+                                collection: demo/zefix.company
+                                viewtype: list
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: New
+        content:
+          - uesio/appkit.layout_detail_split:
+              main:
+                - uesio/appkit.form_new:
+                    wire: company
+                    content:
+                      - uesio/io.box:
+                          uesio.variant: uesio/appkit.primarysection
+                          components:
+                            - uesio/io.field:
+                                fieldId: demo/zefix.name
+                            - uesio/io.field:
+                                fieldId: demo/zefix.canton
+              left:

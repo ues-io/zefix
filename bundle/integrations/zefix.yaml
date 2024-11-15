@@ -1,2 +1,5 @@
 name: zefix
 type: zefix
+authentication: BASIC_AUTH
+credentials: zefix
+baseUrl: https://www.zefix.admin.ch/ZefixPublicREST

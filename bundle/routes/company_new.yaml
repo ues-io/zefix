@@ -1,0 +1,5 @@
+name: company_new
+path: company/new/{recordid}
+view: company_new
+theme: uesio/core.default
+title: company New

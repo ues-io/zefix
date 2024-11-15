@@ -1,0 +1,5 @@
+name: company_detail
+path: company/detail/{recordid}
+view: company_detail
+theme: uesio/core.default
+title: company Detail
