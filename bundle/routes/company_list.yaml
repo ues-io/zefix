@@ -1,0 +1,5 @@
+name: company_list
+path: company
+view: company_list
+theme: uesio/core.default
+title: company List

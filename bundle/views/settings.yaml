@@ -1,0 +1,30 @@
+name: settings
+definition:
+  wires:
+  components:
+    - uesio/io.viewlayout:
+        uesio.variant: demo/zefix.default
+        left:
+          - uesio/core.view:
+              view: demo/zefix.leftnav
+              slots:
+                crumbs:
+                  - uesio/io.group:
+                      uesio.variant: uesio/appkit.breadcrumbs
+                      components:
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: Settings
+                            icon: settings
+        content:
+          - uesio/io.box:
+              uesio.variant: uesio/appkit.dashboarditem
+              components:
+                - uesio/io.titlebar:
+                    uesio.variant: uesio/appkit.main
+                    title: Settings
+                    subtitle: Add configuration settings here.
+                    avatar:
+                      - uesio/io.text:
+                          uesio.variant: uesio/io.icon
+                          text: settings
