@@ -57,7 +57,7 @@ definition:
                               collection: uesio/core.user
                               viewtype: list
                 - uesio/appkit.sitenav:
-                    title: Collections
+                    title: verifications
                     excludeCollections:
                       - uesio/core.user
                 - $Slot{extra}

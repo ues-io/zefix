@@ -13,6 +13,7 @@ type ZefixCompany = {
 	purpose: string
 	capitalNominal: string
 	cantonalExcerptWeb: string
+	uid: string
 }
 
 type ZefixResponse = ZefixCompany[]
@@ -67,7 +68,7 @@ export default function company(bot: LoadBotApi) {
 		body,
 	})
 
-	// Here we match the retrived data records to the collection data
+	// Here we match the retrieved data records to the collection data
 	response.body.forEach((record) => {
 		bot.addRecord({
 			["name"]: record.name,
@@ -76,7 +77,8 @@ export default function company(bot: LoadBotApi) {
 			["status"]: record.status,
 			["purpose"]: record.purpose,
 			["capitalnominal"]: record.capitalNominal,
-			["cantonalexcerptweb"]: record.cantonalExcerptWeb, 
+			["cantonalexcerptweb"]: record.cantonalExcerptWeb,
+			["uid"]: record.uid, 
 			["uesio/core.id"]: record.chid,
 		})
 	})
