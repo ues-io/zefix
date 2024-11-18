@@ -111,7 +111,7 @@ definition:
                                           action: uesio/aikit.invokemodel
                                           params:
                                             model: anthropic.claude-3-haiku-20240307-v1:0
-                                            input: "${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose}"
+                                            input: "${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose} the cantonal excerpt web is ${company:cantonalexcerptweb}"
                                             temperature: null
                                             top_k: null
                                             top_p: null

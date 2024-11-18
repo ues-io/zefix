@@ -9,16 +9,22 @@ definition:
         demo/zefix.canton: # Components determine the layout and composition of your view
         demo/zefix.legalseat: {}
         demo/zefix.status: null
+        demo/zefix.uid: {}
       events: []
     history:
       fields:
         demo/zefix.name: {}
+        demo/zefix.uid: {}
+        uesio/core.createdat: {}
       collection: demo/zefix.history
       batchsize: 200
       init:
         query: true
         create: false
       events: []
+      order:
+        - desc: true
+          field: uesio/core.createdat
   components:
     - uesio/io.viewlayout:
         uesio.variant: demo/zefix.default
@@ -49,7 +55,7 @@ definition:
               content:
                 - uesio/io.table:
                     uesio.variant: uesio/appkit.main
-                    selectable: true
+                    selectable: false
                     rowactions:
                       - icon: visibility
                         text: View
@@ -59,11 +65,14 @@ definition:
                         signals:
                           - signal: wire/CREATE_RECORD
                             wire: history
+                            prepend: true
                           - signal: wire/UPDATE_FIELDS
                             wire: history
                             fields:
                               - field: demo/zefix.name
                                 value: ${company:name}
+                              - field: demo/zefix.uid
+                                value: ${company:uid}
                           - signal: wire/SAVE
                             wires:
                               - history
@@ -75,12 +84,15 @@ definition:
                       - field: demo/zefix.name
                       - field: demo/zefix.legalseat
                       - field: demo/zefix.status
+                      - field: demo/zefix.uid
                     uesio.id: companyTable
                     wire: company
                     pagesize: 10
                     mode: READ
+                    uesio.styleTokens:
+                      root: []
                 - uesio/io.text:
-                    text: Audit Trail
+                    text: AUDIT TRAIL
                     element: div
                     align: left
                     uesio.variant: ""
@@ -88,10 +100,18 @@ definition:
                       root:
                         - p-1
                         - text-sm
+                    color: grey
                 - uesio/io.table:
                     wire: history
                     columns:
                       - field: demo/zefix.name
+                      - field: demo/zefix.uid
+                      - field: uesio/core.createdat
+                        label: Date Researched
                     mode: READ
                     rownumbers: true
                     uesio.id: history_audit
+                    pagesize: 5
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header

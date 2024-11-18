@@ -1,6 +1,7 @@
 name: company
 label: Company
 type: EXTERNAL
+icon: home
 pluralLabel: Companies
 integration: zefix
 loadBot: company
