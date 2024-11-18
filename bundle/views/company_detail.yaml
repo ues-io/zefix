@@ -15,6 +15,8 @@ definition:
         demo/zefix.legalseat: {}
         demo/zefix.status: {}
         demo/zefix.purpose: {}
+        demo/zefix.capitalnominal: {}
+        demo/zefix.cantonalexcerptweb: {}
       conditions:
         - field: uesio/core.id
           valueSource: PARAM
@@ -75,9 +77,14 @@ definition:
                                   - uesio/io.field:
                                       fieldId: demo/zefix.legalseat
                                   - uesio/io.field:
+                                      fieldId: demo/zefix.capitalnominal
+                                  - uesio/io.field:
                                       fieldId: demo/zefix.status
                                   - uesio/io.field:
                                       fieldId: demo/zefix.purpose
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.cantonalexcerptweb
+                          actions: []
                     left:
                       - uesio/io.box:
                           components:

@@ -11,6 +11,8 @@ type ZefixCompany = {
 	legalSeat: string
 	status: string
 	purpose: string
+	capitalNominal: string
+	cantonalExcerptWeb: string
 }
 
 type ZefixResponse = ZefixCompany[]
@@ -73,6 +75,8 @@ export default function company(bot: LoadBotApi) {
 			["legalseat"]: record.legalSeat,
 			["status"]: record.status,
 			["purpose"]: record.purpose,
+			["capitalnominal"]: record.capitalNominal,
+			["cantonalexcerptweb"]: record.cantonalExcerptWeb, 
 			["uesio/core.id"]: record.chid,
 		})
 	})
