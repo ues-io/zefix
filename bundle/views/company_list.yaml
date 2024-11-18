@@ -79,6 +79,15 @@ definition:
                     wire: company
                     pagesize: 10
                     mode: READ
+                - uesio/io.text:
+                    text: Audit Trail
+                    element: div
+                    align: left
+                    uesio.variant: ""
+                    uesio.styleTokens:
+                      root:
+                        - p-1
+                        - text-sm
                 - uesio/io.table:
                     wire: history
                     columns:
