@@ -17,6 +17,7 @@ definition:
         demo/zefix.purpose: {}
         demo/zefix.capitalnominal: {}
         demo/zefix.cantonalexcerptweb: {}
+        demo/zefix.uid: {}
       conditions:
         - field: uesio/core.id
           valueSource: PARAM
@@ -32,6 +33,22 @@ definition:
       init:
         query: false
         create: true
+    approved:
+      fields:
+        demo/zefix.canton: {}
+        demo/zefix.cantonalexcerptweb: {}
+        demo/zefix.capitalnominal: {}
+        demo/zefix.legalseat: {}
+        demo/zefix.name: {}
+        demo/zefix.purpose: {}
+        demo/zefix.status: {}
+        demo/zefix.uid: {}
+        demo/zefix.comment: {}
+      collection: demo/zefix.approved
+      batchsize: 200
+      init:
+        query: true
+        create: false
   # Components determine the layout and composition of your view
   components:
     - uesio/io.viewlayout:
@@ -70,6 +87,8 @@ definition:
                             - uesio/io.box:
                                 uesio.variant: uesio/appkit.primarysection
                                 components:
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.uid
                                   - uesio/io.field:
                                       fieldId: demo/zefix.name
                                   - uesio/io.field:
@@ -111,7 +130,7 @@ definition:
                                           action: uesio/aikit.invokemodel
                                           params:
                                             model: anthropic.claude-3-haiku-20240307-v1:0
-                                            input: "${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose} the cantonal excerpt web is ${company:cantonalexcerptweb}"
+                                            input: "Summarise ${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose} the cantonal excerpt web is ${company:cantonalexcerptweb}"
                                             temperature: null
                                             top_k: null
                                             top_p: null
@@ -128,6 +147,40 @@ definition:
                                       placeholder: ""
                                       longtext:
                                         rows: 20
+                            - uesio/io.button:
+                                text: Approve
+                                icon: add
+                                uesio.variant: uesio/appkit.primary
+                                iconPlacement: end
+                                signals:
+                                  - signal: wire/CREATE_RECORD
+                                    wire: approved
+                                  - signal: wire/UPDATE_FIELDS
+                                    wire: approved
+                                    fields:
+                                      - field: demo/zefix.name
+                                        value: ${company:name}
+                                      - field: demo/zefix.comment
+                                        value: ${inputs:output}
+                                      - field: demo/zefix.canton
+                                        value: ${company:canton}
+                                      - field: demo/zefix.cantonalexcerptweb
+                                        value: ${company:cantonalexcerptweb}
+                                      - field: demo/zefix.capitalnominal
+                                        value: ${company:capitalnominal}
+                                      - field: demo/zefix.legalseat
+                                        value: ${company:legalseat}
+                                      - field: demo/zefix.purpose
+                                        value: ${company:purpose}
+                                      - field: demo/zefix.status
+                                        value: ${company:status}
+                                      - field: demo/zefix.uid
+                                        value: ${company:uid}
+                                  - signal: wire/SAVE
+                                    wires:
+                                      - approved
+                                  - signal: route/NAVIGATE_TO_ROUTE
+                                    route: demo/zefix.company_list
           - uesio/io.box:
               uesio.variant: uesio/io.section
               uesio.display:

@@ -18,6 +18,7 @@ definition:
                     uesio.styleTokens:
                       root:
                         - text-xl
+                        - -ml-7
                 - uesio/io.text:
                     text: "Presented by: Ansuya Ahluwalia, CTO, Thirty3"
                     element: h1
@@ -27,6 +28,7 @@ definition:
                       root:
                         - pt-1
                         - text-white
+                        - -ml-9
               uesio.styleTokens:
                 root: []
         uesio.styleTokens:

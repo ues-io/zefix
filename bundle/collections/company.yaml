@@ -2,6 +2,6 @@ name: company
 label: Company
 type: EXTERNAL
 icon: home
-pluralLabel: Companies
+pluralLabel: Company Search
 integration: zefix
 loadBot: company
