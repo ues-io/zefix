@@ -16,6 +16,9 @@ definition:
         demo/zefix.uid:
         uesio/core.createdat:
         uesio/core.createdby: # Components determine the layout and composition of your view
+      order:
+        - desc: true
+          field: uesio/core.createdat
   components:
     - uesio/io.viewlayout:
         uesio.variant: demo/zefix.default

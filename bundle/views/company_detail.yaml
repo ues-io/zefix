@@ -117,11 +117,12 @@ definition:
                                       label: Ask
                                       labelPosition: none
                                       placeholder: Ask Claude AI
+                                      uesio.variant: uesio/appkit.search
                                   - uesio/io.button:
-                                      text: Ask
-                                      icon: autofps_select
-                                      uesio.variant: uesio/appkit.note
-                                      iconPlacement: start
+                                      text: Search
+                                      icon: cell_tower
+                                      uesio.variant: uesio/appkit.primary
+                                      iconPlacement: end
                                       signals:
                                         - signal: integration/RUN_ACTION
                                           stepId: ask
@@ -130,7 +131,7 @@ definition:
                                           action: uesio/aikit.invokemodel
                                           params:
                                             model: anthropic.claude-3-haiku-20240307-v1:0
-                                            input: "Summarise ${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose} the cantonal excerpt web is ${company:cantonalexcerptweb}"
+                                            input: "${inputs:input} the company name is: ${company:name} the status is: ${company:status} the purpose of this company is: ${company:purpose} the cantonal excerpt web is ${company:cantonalexcerptweb}"
                                             temperature: null
                                             top_k: null
                                             top_p: null
@@ -142,11 +143,12 @@ definition:
                                               value: $SignalOutput{[ask][0.text]}
                                   - uesio/io.field:
                                       fieldId: output
-                                      label: Answer
+                                      label: Results
                                       labelPosition: top
                                       placeholder: ""
                                       longtext:
                                         rows: 20
+                                      uesio.variant: uesio/io.default
                             - uesio/io.button:
                                 text: Approve
                                 icon: add
@@ -181,6 +183,9 @@ definition:
                                       - approved
                                   - signal: route/NAVIGATE_TO_ROUTE
                                     route: demo/zefix.company_list
+                          uesio.styleTokens:
+                            root:
+                              - pt-6
           - uesio/io.box:
               uesio.variant: uesio/io.section
               uesio.display:
@@ -190,6 +195,9 @@ definition:
                 - uesio/io.text:
                     text: Select a record
         right: []
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header
   params:
     recordid:
       type: RECORD
