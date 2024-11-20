@@ -1,0 +1,40 @@
+name: login
+definition:
+  # Wires connect to data in collections
+  wires: {}
+  # Components determine the layout and composition of your view
+  components:
+    - uesio/io.box:
+        components:
+          - uesio/io.grid:
+              uesio.variant: uesio/io.one_column
+              uesio.styleTokens:
+                root:
+                  - pl-80
+              items:
+                - uesio/io.box:
+                    components:
+                      - uesio/io.image:
+                          loading: lazy
+                          uesio.variant: ""
+                          file: demo/zefix.thirty3logo
+                          uesio.styleTokens:
+                            root:
+                              - pl-12
+                    uesio.styleTokens:
+                      root:
+                        - w-96
+                        - bg-black
+                        - p-6
+                - uesio/io.box:
+                    components:
+                      - uesio/core.view:
+                          view: uesio/core.loginarea
+                    uesio.styleTokens:
+                      root:
+                        - w-96
+                        - border
+                        - p-7
+        uesio.styleTokens:
+          root:
+            - pt-44

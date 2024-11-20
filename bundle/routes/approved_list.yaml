@@ -1,0 +1,5 @@
+name: approved_list
+path: approved
+view: approved_list
+theme: uesio/core.default
+title: approved List

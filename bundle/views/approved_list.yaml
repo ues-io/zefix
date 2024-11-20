@@ -1,0 +1,76 @@
+name: approved_list
+definition:
+  # Wires connect to data in collections
+  wires:
+    approved:
+      collection: demo/zefix.approved
+      fields:
+        demo/zefix.canton:
+        demo/zefix.cantonalexcerptweb:
+        demo/zefix.capitalnominal:
+        demo/zefix.comment:
+        demo/zefix.legalseat:
+        demo/zefix.name:
+        demo/zefix.purpose:
+        demo/zefix.status:
+        demo/zefix.uid:
+        uesio/core.createdat:
+        uesio/core.createdby: # Components determine the layout and composition of your view
+  components:
+    - uesio/io.viewlayout:
+        uesio.variant: demo/zefix.default
+        left:
+          - uesio/core.view:
+              view: demo/zefix.leftnav
+              slots:
+                crumbs:
+                  - uesio/io.group:
+                      uesio.variant: uesio/appkit.breadcrumbs
+                      components:
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: $Collection{approved:pluralLabel}
+                            icon: $Collection{approved:icon}
+        content:
+          - uesio/appkit.form_list:
+              wire: approved
+              linkedComponentType: uesio/io.table
+              linkedComponentId: approvedTable
+              filters:
+                - uesio/io.searchbox:
+                    uesio.variant: uesio/appkit.main
+                    wire: approved
+                    placeholder: Search $Collection{approved:pluralLabel}
+              content:
+                - uesio/io.table:
+                    uesio.variant: uesio/appkit.main
+                    selectable: true
+                    rowactions:
+                      - icon: visibility
+                        text: View
+                        type: DEFAULT
+                        uesio.display:
+                          - type: recordIsNotNew
+                        signals:
+                          - signal: route/NAVIGATE_TO_ASSIGNMENT
+                            viewtype: detail
+                            recordid: ${uesio/core.id}
+                            collection: demo/zefix.approved
+                    columns:
+                      - field: demo/zefix.name
+                      - field: demo/zefix.canton
+                      - field: demo/zefix.uid
+                      - field: demo/zefix.legalseat
+                      - field: demo/zefix.cantonalexcerptweb
+                      - field: demo/zefix.capitalnominal
+                      - field: demo/zefix.purpose
+                      - field: demo/zefix.comment
+                      - field: demo/zefix.status
+                      - field: uesio/core.createdat
+                      - field: uesio/core.createdby
+                    uesio.id: approvedTable
+                    wire: approved
+                    pagesize: 10
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header

@@ -22,3 +22,6 @@ definition:
                 - uesio/io.image:
                     loading: lazy
                     file: demo/zefix.thirty3web
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header

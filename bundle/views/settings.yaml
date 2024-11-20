@@ -28,3 +28,6 @@ definition:
                       - uesio/io.text:
                           uesio.variant: uesio/io.icon
                           text: settings
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header

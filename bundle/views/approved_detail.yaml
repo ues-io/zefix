@@ -1,0 +1,94 @@
+name: approved_detail
+definition:
+  # Wires connect to data in collections
+  wires:
+    approved:
+      collection: demo/zefix.approved
+      fields:
+        demo/zefix.canton:
+        demo/zefix.cantonalexcerptweb:
+        demo/zefix.capitalnominal:
+        demo/zefix.comment:
+        demo/zefix.legalseat:
+        demo/zefix.name:
+        demo/zefix.purpose:
+        demo/zefix.status:
+        demo/zefix.uid:
+        uesio/core.updatedby:
+        uesio/core.updatedat:
+        uesio/core.createdby:
+        uesio/core.createdat:
+        uesio/core.owner:
+      conditions:
+        - field: uesio/core.id
+          valueSource: PARAM
+          param: recordid
+  # Components determine the layout and composition of your view
+  components:
+    - uesio/io.viewlayout:
+        uesio.variant: demo/zefix.default
+        left:
+          - uesio/core.view:
+              view: demo/zefix.leftnav
+              slots:
+                crumbs:
+                  - uesio/io.group:
+                      uesio.variant: uesio/appkit.breadcrumbs
+                      components:
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: $Collection{approved:pluralLabel}
+                            icon: $Collection{approved:icon}
+                            signals:
+                              - signal: route/NAVIGATE_TO_ASSIGNMENT
+                                collection: demo/zefix.approved
+                                viewtype: list
+                        - uesio/appkit.icontile:
+                            tileVariant: uesio/appkit.breadcrumb
+                            title: $RecordMeta{approved:name}
+        content:
+          - uesio/io.box:
+              uesio.display:
+                - type: paramIsSet
+                  param: recordid
+              components:
+                - uesio/appkit.layout_detail_split:
+                    main:
+                      - uesio/appkit.form_detail:
+                          wire: approved
+                          content:
+                            - uesio/io.box:
+                                uesio.variant: uesio/appkit.primarysection
+                                components:
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.canton
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.cantonalexcerptweb
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.capitalnominal
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.comment
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.legalseat
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.name
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.purpose
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.status
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.uid
+                    left:
+          - uesio/io.box:
+              uesio.variant: uesio/io.section
+              uesio.display:
+                - type: paramIsNotSet
+                  param: recordid
+              components:
+                - uesio/io.text:
+                    text: Select a record
+  params:
+    recordid:
+      type: RECORD
+      required: true
+      collection: demo/zefix.approved

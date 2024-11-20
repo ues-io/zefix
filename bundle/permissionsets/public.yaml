@@ -1,11 +1,15 @@
 name: public
 named: {}
-views: {}
+views:
+  demo/zefix.login: true
 collections: {}
 routes:
   demo/zefix.login: true
   demo/zefix.requestpassword: true
-files: {}
+files:
+  demo/zefix.thirty3logo: true
+  demo/zefix.thirty3web: true
+  demo/zefix.uesio_logo1: true
 bots: {}
 integrationActions: {}
 allowallbots: false

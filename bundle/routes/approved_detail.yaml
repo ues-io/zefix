@@ -1,0 +1,5 @@
+name: approved_detail
+path: approved/detail/{recordid}
+view: approved_detail
+theme: uesio/core.default
+title: approved Detail
