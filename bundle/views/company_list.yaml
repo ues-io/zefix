@@ -111,7 +111,7 @@ definition:
                     mode: READ
                     rownumbers: true
                     uesio.id: history_audit
-                    pagesize: 5
+                    pagesize: 10
                     uesio.variant: uesio/appkit.main
                     uesio.styleTokens:
                       root: []
