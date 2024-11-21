@@ -6,6 +6,8 @@ definition:
         left:
           - uesio/core.view:
               view: demo/zefix.leftnav
+              params:
+                selected: users
               slots:
                 crumbs:
                   - uesio/io.group:
