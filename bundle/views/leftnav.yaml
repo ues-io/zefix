@@ -18,6 +18,8 @@ definition:
               title: Admin
               content:
                 - uesio/appkit.icontile:
+                    uesio.id: home
+                    selectedid: $Param{selected}
                     tileVariant: uesio/io.nav
                     title: Home
                     icon: home
@@ -25,6 +27,8 @@ definition:
                       - signal: route/NAVIGATE
                         path: home
                 - uesio/appkit.icontile:
+                    uesio.id: users
+                    selectedid: $Param{selected}
                     tileVariant: uesio/io.nav
                     title: Users
                     icon: badge
