@@ -16,18 +16,19 @@ definition:
                           text: GenAI-Readiness in Banking
                           element: div
                           align: center
-                          color: white
+                          color: ""
                           uesio.styleTokens:
                             root:
                               - text-xl
                               - -ml-7
                     uesio.styleTokens:
-                      root: []
+                      root:
+                        - pl-7
                 - uesio/io.text:
                     text: "Presented by: Ansuya Ahluwalia, CTO, Thirty3"
                     element: h1
                     align: left
-                    color: ""
+                    color: black
                     uesio.styleTokens:
                       root:
                         - pt-1
@@ -36,8 +37,8 @@ definition:
                         - pl-2
               uesio.styleTokens:
                 root:
-                  - pl-64
+                  - pl-72
         uesio.styleTokens:
           content: []
           root:
-            - bg-black
+            - bg-gray-100

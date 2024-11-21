@@ -1,5 +1,5 @@
 name: public
+label: Public User
 permissionSets:
   - demo/zefix.public
   - uesio/core.public
-label: Public User

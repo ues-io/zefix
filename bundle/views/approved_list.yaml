@@ -72,6 +72,4 @@ definition:
                     uesio.id: approvedTable
                     wire: approved
                     pagesize: 10
-        header:
-          - uesio/core.view:
-              view: demo/zefix.header
+        header: []

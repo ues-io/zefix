@@ -5,8 +5,6 @@ extends: uesio/appkit.left
 definition:
   uesio.styleTokens:
     root:
-      - border-r-1
-      - border-black
     header:
       - bg-white
     inner:

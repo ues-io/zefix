@@ -1,4 +1,4 @@
 name: admin
+label: Admin User
 permissionSets:
   - demo/zefix.admin
-label: Admin User
