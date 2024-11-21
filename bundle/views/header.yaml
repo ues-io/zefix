@@ -10,15 +10,19 @@ definition:
           - uesio/io.grid:
               uesio.variant: uesio/appkit.three_columns
               items:
-                - uesio/io.text:
-                    text: GenAI-Readiness in Banking
-                    element: div
-                    align: center
-                    color: yellow
+                - uesio/io.box:
+                    components:
+                      - uesio/io.text:
+                          text: GenAI-Readiness in Banking
+                          element: div
+                          align: center
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - text-xl
+                              - -ml-7
                     uesio.styleTokens:
-                      root:
-                        - text-xl
-                        - -ml-7
+                      root: []
                 - uesio/io.text:
                     text: "Presented by: Ansuya Ahluwalia, CTO, Thirty3"
                     element: h1
@@ -29,8 +33,10 @@ definition:
                         - pt-1
                         - text-white
                         - -ml-9
+                        - pl-2
               uesio.styleTokens:
-                root: []
+                root:
+                  - pl-64
         uesio.styleTokens:
           content: []
           root:

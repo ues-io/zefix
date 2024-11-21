@@ -117,7 +117,9 @@ definition:
                                       label: Ask
                                       labelPosition: none
                                       placeholder: Ask Claude AI
-                                      uesio.variant: uesio/appkit.search
+                                      uesio.variant: uesio/io.default
+                                      uesio.styleTokens:
+                                        input: []
                                   - uesio/io.button:
                                       text: Search
                                       icon: cell_tower
@@ -140,14 +142,18 @@ definition:
                                           wire: inputs
                                           fields:
                                             - field: output
-                                              value: $SignalOutput{[ask][0.text]}
+                                              value: |-
+                                                You asked: ${inputs:input}
+
+                                                $SignalOutput{[ask][0.text]}
+                                            - field: input
                                   - uesio/io.field:
                                       fieldId: output
                                       label: Results
                                       labelPosition: top
                                       placeholder: ""
                                       longtext:
-                                        rows: 20
+                                        rows: 30
                                       uesio.variant: uesio/io.default
                             - uesio/io.button:
                                 text: Approve
@@ -182,10 +188,26 @@ definition:
                                     wires:
                                       - approved
                                   - signal: route/NAVIGATE_TO_ROUTE
-                                    route: demo/zefix.company_list
+                                    route: demo/zefix.approved_list
+                                uesio.styleTokens:
+                                  icon: []
+                                  root:
+                                    - bg-green-400
+                                uesio.display:
+                                  - type: fieldValue
+                                    operator: NOT_IN
+                                    wire: inputs
+                                    field: output
+                                    values:
+                                      - ""
                           uesio.styleTokens:
                             root:
                               - pt-6
+                              - border
+                              - pl-6
+                              - pr-6
+                              - bg-blue-50
+                              - shadow-lg
           - uesio/io.box:
               uesio.variant: uesio/io.section
               uesio.display:
