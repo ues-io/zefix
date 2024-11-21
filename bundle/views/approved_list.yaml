@@ -66,8 +66,6 @@ definition:
                       - field: demo/zefix.legalseat
                       - field: demo/zefix.cantonalexcerptweb
                       - field: demo/zefix.capitalnominal
-                      - field: demo/zefix.purpose
-                      - field: demo/zefix.comment
                       - field: demo/zefix.status
                       - field: uesio/core.createdat
                       - field: uesio/core.createdby

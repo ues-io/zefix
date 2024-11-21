@@ -112,6 +112,10 @@ definition:
                     rownumbers: true
                     uesio.id: history_audit
                     pagesize: 5
+                    uesio.variant: uesio/appkit.main
+                    uesio.styleTokens:
+                      root: []
+                    rowactions: []
         header:
           - uesio/core.view:
               view: demo/zefix.header

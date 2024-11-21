@@ -23,6 +23,17 @@ definition:
         - field: uesio/core.id
           valueSource: PARAM
           param: recordid
+    inputs:
+      viewOnly: true
+      fields:
+        input:
+          type: TEXT
+        output:
+          type: LONGTEXT
+          label: output
+      init:
+        query: false
+        create: true
   # Components determine the layout and composition of your view
   components:
     - uesio/io.viewlayout:
@@ -79,6 +90,59 @@ definition:
                                   - uesio/io.field:
                                       fieldId: demo/zefix.uid
                     left:
+                      - uesio/io.box:
+                          components:
+                            - uesio/io.list:
+                                mode: EDIT
+                                wire: inputs
+                                uesio.id: inputlist
+                                components:
+                                  - uesio/io.field:
+                                      fieldId: input
+                                      label: Ask
+                                      labelPosition: none
+                                      placeholder: Ask Cluade AI
+                                      uesio.variant: uesio/io.default
+                                  - uesio/io.button:
+                                      text: Search
+                                      icon: cell_tower
+                                      uesio.variant: uesio/appkit.primary
+                                      iconPlacement: end
+                                      signals:
+                                        - signal: integration/RUN_ACTION
+                                          stepId: ask
+                                          integrationType: uesio/aikit.bedrock
+                                          integration: uesio/aikit.bedrock
+                                          action: uesio/aikit.invokemodel
+                                          params:
+                                            model: anthropic.claude-3-haiku-20240307-v1:0
+                                            input: "${inputs:input} the company name is: ${approved:name} the status is: ${approved:status} the purpose of this company is: ${approved:purpose} the cantonal excerpt web is ${approved:cantonalexcerptweb}"
+                                        - signal: wire/UPDATE_FIELDS
+                                          wire: inputs
+                                          fields:
+                                            - field: output
+                                              value: |-
+                                                You asked: ${inputs:input}
+
+                                                $SignalOutput{[ask][0.text]}
+                                            - field: input
+                                  - uesio/io.field:
+                                      fieldId: output
+                                      label: Results
+                                      labelPosition: top
+                                      longtext:
+                                        rows: 30
+                                      uesio.styleTokens:
+                                        input:
+                                          - inset-8
+                          uesio.styleTokens:
+                            root:
+                              - pt-6
+                              - border
+                              - pl-6
+                              - pr-6
+                              - bg-blue-50
+                              - shadow-lg
           - uesio/io.box:
               uesio.variant: uesio/io.section
               uesio.display:
@@ -87,6 +151,9 @@ definition:
               components:
                 - uesio/io.text:
                     text: Select a record
+        header:
+          - uesio/core.view:
+              view: demo/zefix.header
   params:
     recordid:
       type: RECORD

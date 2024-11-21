@@ -9,6 +9,7 @@ routes:
 files:
   demo/zefix.thirty3logo: true
   demo/zefix.thirty3web: true
+  demo/zefix.uesio_logo_2: true
   demo/zefix.uesio_logo1: true
 bots: {}
 integrationActions: {}
