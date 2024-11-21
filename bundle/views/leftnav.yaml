@@ -42,13 +42,6 @@ definition:
                               path: home
                       - uesio/appkit.icontile:
                           tileVariant: uesio/io.nav
-                          title: Settings
-                          icon: settings
-                          signals:
-                            - signal: route/NAVIGATE
-                              path: settings
-                      - uesio/appkit.icontile:
-                          tileVariant: uesio/io.nav
                           title: Users
                           icon: badge
                           iconVariant: uesio/io.iconoutline

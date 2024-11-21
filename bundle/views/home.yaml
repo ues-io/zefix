@@ -20,8 +20,86 @@ definition:
           - uesio/io.box:
               components:
                 - uesio/io.image:
-                    loading: lazy
-                    file: demo/zefix.thirty3web
-        header:
-          - uesio/core.view:
-              view: demo/zefix.header
+                    loading: eager
+                    file: demo/zefix.thirty3logo
+                    height: 194
+                    uesio.styleTokens:
+                      root:
+                        - pt-24
+                        - pl-36
+                - uesio/io.box:
+                    components:
+                      - uesio/io.text:
+                          text: Unleash the power of AI
+                          element: div
+                          align: left
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - pt-24
+                              - text-8xl
+                      - uesio/io.text:
+                          text: Innovate, Automate, Accelerate
+                          element: div
+                          align: left
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - pt-7
+                              - text-8xl
+                      - uesio/io.text:
+                          text: MAXIMIZE YOUR BUSINESS EFFICIENCY WITH AI-POWERED STREAMLINED OPERATIONS
+                          element: div
+                          align: left
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - pt-14
+                              - text-3xl
+                              - font-thin
+                      - uesio/io.box:
+                          components:
+                            - uesio/io.text:
+                                text: "Founding Partner of:"
+                                element: div
+                                align: left
+                                color: white
+                                uesio.styleTokens:
+                                  root:
+                                    - pt-11
+                                    - pl-4
+                                    - text-sm
+                                    - pb-4
+                            - uesio/io.box:
+                                components:
+                                  - uesio/io.image:
+                                      loading: lazy
+                                      file: demo/zefix.uesio_logo1
+                                      uesio.styleTokens:
+                                        root: []
+                                      height: 100
+                                  - uesio/io.text:
+                                      text: User Experience Studio
+                                      element: div
+                                      align: left
+                                      color: white
+                                      uesio.styleTokens:
+                                        root:
+                                          - pl-6
+                                uesio.styleTokens:
+                                  root:
+                                    - pl-8
+                          uesio.styleTokens:
+                            root:
+                              - pt-14
+                    uesio.styleTokens:
+                      root:
+                        - pl-36
+                        - pt-14
+              signals: []
+              uesio.styleTokens:
+                root:
+                  - bg-black
+                  - min-h-full
+                  - pt-24
+        header: []
