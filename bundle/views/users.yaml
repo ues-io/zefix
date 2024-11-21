@@ -22,6 +22,4 @@ definition:
           - uesio/core.view:
               view: uesio/appkit.user_list_content
               uesio.id: userListContent
-        header:
-          - uesio/core.view:
-              view: demo/zefix.header
+        header: []

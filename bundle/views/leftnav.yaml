@@ -71,4 +71,3 @@ definition:
                           signals:
                             - signal: "route/NAVIGATE"
                               path: myprofile
-          

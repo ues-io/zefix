@@ -49,7 +49,7 @@ definition:
                 - uesio/io.searchbox:
                     uesio.variant: uesio/appkit.main
                     wire: company
-                    placeholder: Search $Collection{company:pluralLabel}
+                    placeholder: $Collection{company:pluralLabel}
                     searchFields:
                       - demo/zefix.name
               content:
@@ -116,6 +116,4 @@ definition:
                     uesio.styleTokens:
                       root: []
                     rowactions: []
-        header:
-          - uesio/core.view:
-              view: demo/zefix.header
+        header: []

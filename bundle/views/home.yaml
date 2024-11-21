@@ -32,6 +32,14 @@ definition:
                 - uesio/io.box:
                     components:
                       - uesio/io.text:
+                          text: GenAI-Readiness in Banking - Presented by Ansuya Ahluwalia, CTO, Thirty3
+                          element: div
+                          align: left
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - text-3xl
+                      - uesio/io.text:
                           text: Unleash the power of AI
                           element: div
                           align: left
