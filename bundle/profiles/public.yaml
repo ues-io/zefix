@@ -2,3 +2,4 @@ name: public
 permissionSets:
   - demo/zefix.public
   - uesio/core.public
+label: Public User

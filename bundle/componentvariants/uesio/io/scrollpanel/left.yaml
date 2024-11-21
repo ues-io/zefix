@@ -1,0 +1,13 @@
+name: left
+label: Left Sidebar
+extends: uesio/appkit.left
+public: true
+definition:
+  uesio.styleTokens:
+    root:
+    header:
+      - bg-white
+    inner:
+      - bg-white
+    footer:
+      - bg-white
