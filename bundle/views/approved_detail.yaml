@@ -19,6 +19,7 @@ definition:
         uesio/core.createdby:
         uesio/core.createdat:
         uesio/core.owner:
+        demo/zefix.application: {}
       conditions:
         - field: uesio/core.id
           valueSource: PARAM
@@ -89,6 +90,8 @@ definition:
                                       fieldId: demo/zefix.status
                                   - uesio/io.field:
                                       fieldId: demo/zefix.uid
+                                  - uesio/io.field:
+                                      fieldId: demo/zefix.application
                     left:
                       - uesio/io.box:
                           components:
@@ -106,7 +109,7 @@ definition:
                                   - uesio/io.button:
                                       text: Search
                                       icon: cell_tower
-                                      uesio.variant: uesio/appkit.primary
+                                      uesio.variant: uesio/sitekit.primary_dark
                                       iconPlacement: end
                                       signals:
                                         - signal: integration/RUN_ACTION
@@ -116,7 +119,7 @@ definition:
                                           action: uesio/aikit.invokemodel
                                           params:
                                             model: anthropic.claude-3-haiku-20240307-v1:0
-                                            input: "${inputs:input} the company name is: ${approved:name} the status is: ${approved:status} the purpose of this company is: ${approved:purpose} the cantonal excerpt web is ${approved:cantonalexcerptweb}"
+                                            input: "${inputs:input} the company name is: ${approved:name} the status is: ${approved:status} the purpose of this company is: ${approved:purpose} the cantonal excerpt web is ${approved:cantonalexcerptweb} The application is ${approved:application}"
                                         - signal: wire/UPDATE_FIELDS
                                           wire: inputs
                                           fields:
@@ -131,10 +134,36 @@ definition:
                                       label: Results
                                       labelPosition: top
                                       longtext:
-                                        rows: 30
+                                        rows: 20
                                       uesio.styleTokens:
                                         input:
                                           - inset-8
+                                  - uesio/io.button:
+                                      text: Approve
+                                      icon: approval
+                                      uesio.variant: uesio/sitekit.primary_dark
+                                      iconPlacement: end
+                                      signals:
+                                        - signal: wire/UPDATE_FIELDS
+                                          wire: approved
+                                          fields:
+                                            - field: demo/zefix.status
+                                              value: APPROVED
+                                        - signal: wire/SAVE
+                                          wires:
+                                            - approved
+                                        - signal: notification/ADD
+                                          severity: success
+                                          text: Application Approved!
+                                          duration: "3"
+                                      uesio.display:
+                                        - type: fieldValue
+                                          operator: NOT_IN
+                                          wire: approved
+                                          field: demo/zefix.status
+                                          values:
+                                            - APPROVED
+                                emptyState: []
                           uesio.styleTokens:
                             root:
                               - pt-6

@@ -1,0 +1,9 @@
+name: status
+options:
+  - label: ACTIVE
+    value: ACTIVE
+  - label: DECLINED
+    value: DECLINED
+  - label: APPROVED
+    value: APPROVED
+blank_option_label: NO STATUS

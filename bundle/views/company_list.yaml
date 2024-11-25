@@ -25,6 +25,19 @@ definition:
       order:
         - desc: true
           field: uesio/core.createdat
+    applications:
+      fields:
+        demo/zefix.name: {}
+        demo/zefix.first_name: {}
+        demo/zefix.last_name: {}
+        demo/zefix.email: {}
+        demo/zefix.city: {}
+        demo/zefix.country: {}
+      collection: demo/zefix.application
+      batchsize: 200
+      init:
+        query: true
+        create: false
   components:
     - uesio/io.viewlayout:
         uesio.variant: demo/zefix.default
@@ -49,7 +62,7 @@ definition:
                 - uesio/io.searchbox:
                     uesio.variant: uesio/appkit.main
                     wire: company
-                    placeholder: $Collection{company:pluralLabel}
+                    placeholder: ZEFIX Search
                     searchFields:
                       - demo/zefix.name
               content:
@@ -90,7 +103,47 @@ definition:
                     pagesize: 10
                     mode: READ
                     uesio.styleTokens:
-                      root: []
+                      root:
+                        - bg-blue-50
+                    rownumbers: true
+                - uesio/io.box:
+                    components:
+                      - uesio/io.text:
+                          text: NEW APPLICATIONS
+                          element: div
+                          align: left
+                          uesio.variant: ""
+                          uesio.styleTokens:
+                            root:
+                              - p-1
+                              - text-sm
+                          color: ""
+                      - uesio/io.table:
+                          wire: applications
+                          columns:
+                            - field: demo/zefix.name
+                            - field: demo/zefix.first_name
+                            - field: demo/zefix.last_name
+                            - field: demo/zefix.email
+                            - field: demo/zefix.city
+                            - field: demo/zefix.country
+                          rowactions:
+                            - text: process
+                              type: ""
+                              signals:
+                                - signal: wire/SEARCH
+                                  wire: company
+                                  searchFields:
+                                    - demo/zefix.name
+                                  search: ${name}
+                              icon: arrow_forward_ios
+                          rownumbers: true
+                          uesio.variant: uesio/appkit.main
+                    uesio.variant: uesio/io.danger
+                    uesio.styleTokens:
+                      root:
+                        - ml-1
+                        - mr-1
                 - uesio/io.text:
                     text: AUDIT TRAIL
                     element: div
@@ -100,6 +153,7 @@ definition:
                       root:
                         - p-1
                         - text-sm
+                        - pt-5
                     color: grey
                 - uesio/io.table:
                     wire: history
@@ -111,7 +165,7 @@ definition:
                     mode: READ
                     rownumbers: true
                     uesio.id: history_audit
-                    pagesize: 10
+                    pagesize: 5
                     uesio.variant: uesio/appkit.main
                     uesio.styleTokens:
                       root: []
