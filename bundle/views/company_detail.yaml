@@ -44,6 +44,7 @@ definition:
         demo/zefix.status: {}
         demo/zefix.uid: {}
         demo/zefix.comment: {}
+        demo/zefix.application: {}
       collection: demo/zefix.approved
       batchsize: 200
       init:
@@ -184,6 +185,8 @@ definition:
                                         value: ${company:status}
                                       - field: demo/zefix.uid
                                         value: ${company:uid}
+                                      - field: demo/zefix.application
+                                        value: "Credit Application: \n\n1. Is this for business credit: YES\n2. Do you have a current bank account: YES\n3. Is the loan application for expansion or bridging finance: EXPANSION\n4. Is the finance for use in Switzerland or abroad: SWITZERLAND\n\n\nDOCUMENT STATS:\na. The applicant has signed the application for finance.\nb. The applicant signature has been verified.\n\n \n"
                                   - signal: wire/SAVE
                                     wires:
                                       - approved

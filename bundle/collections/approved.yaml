@@ -1,5 +1,5 @@
 name: approved
-label: Approved
+label: Approvals
 icon: check
-pluralLabel: Approved
+pluralLabel: Approvals
 nameField: name

@@ -1,3 +1,4 @@
 name: status
 label: Status
-type: TEXT
+type: SELECT
+selectList: status
