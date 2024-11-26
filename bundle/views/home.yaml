@@ -40,7 +40,7 @@ definition:
                             root:
                               - text-3xl
                       - uesio/io.text:
-                          text: Unleash the power of AI
+                          text: Qualify your customer for finance
                           element: div
                           align: left
                           color: white
@@ -49,7 +49,7 @@ definition:
                               - pt-24
                               - text-8xl
                       - uesio/io.text:
-                          text: Innovate, Automate, Accelerate
+                          text: using private data and AI
                           element: div
                           align: left
                           color: white
