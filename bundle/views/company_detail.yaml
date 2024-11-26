@@ -148,6 +148,9 @@ definition:
 
                                                 $SignalOutput{[ask][0.text]}
                                             - field: input
+                                      uesio.styleTokens:
+                                        root:
+                                          - bg-green-500
                                   - uesio/io.field:
                                       fieldId: output
                                       label: Results
@@ -157,8 +160,8 @@ definition:
                                         rows: 20
                                       uesio.variant: uesio/io.default
                             - uesio/io.button:
-                                text: Approve
-                                icon: add
+                                text: Process
+                                icon: arrow_forward_ios
                                 uesio.variant: uesio/appkit.primary
                                 iconPlacement: end
                                 signals:
