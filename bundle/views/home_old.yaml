@@ -1,4 +1,4 @@
-name: home
+name: home_old
 definition:
   wires:
   components:
@@ -21,10 +21,18 @@ definition:
         content:
           - uesio/io.box:
               components:
+                - uesio/io.image:
+                    loading: eager
+                    file: demo/zefix.thirty3logo
+                    height: 194
+                    uesio.styleTokens:
+                      root:
+                        - pt-24
+                        - pl-36
                 - uesio/io.box:
                     components:
                       - uesio/io.text:
-                          text: "GenAI-Readiness in Banking "
+                          text: GenAI-Readiness in Banking - Presented by Ansuya Ahluwalia, CTO, Thirty3
                           element: div
                           align: left
                           color: white
@@ -34,7 +42,7 @@ definition:
                       - uesio/io.text:
                           text: Qualify your customer for finance
                           element: div
-                          align: center
+                          align: left
                           color: white
                           uesio.styleTokens:
                             root:
@@ -43,14 +51,35 @@ definition:
                       - uesio/io.text:
                           text: using private data and AI
                           element: div
-                          align: center
+                          align: left
                           color: white
                           uesio.styleTokens:
                             root:
                               - pt-7
                               - text-8xl
+                      - uesio/io.text:
+                          text: MAXIMIZE YOUR BUSINESS EFFICIENCY WITH AI-POWERED STREAMLINED OPERATIONS
+                          element: div
+                          align: left
+                          color: white
+                          uesio.styleTokens:
+                            root:
+                              - pt-14
+                              - text-3xl
+                              - font-thin
                       - uesio/io.box:
                           components:
+                            - uesio/io.text:
+                                text: "Founding Partner of:"
+                                element: div
+                                align: left
+                                color: white
+                                uesio.styleTokens:
+                                  root:
+                                    - pt-11
+                                    - pl-4
+                                    - text-sm
+                                    - pb-4
                             - uesio/io.box:
                                 components:
                                   - uesio/io.image:
@@ -59,14 +88,20 @@ definition:
                                       uesio.styleTokens:
                                         root: []
                                       height: 100
+                                  - uesio/io.text:
+                                      text: User Experience Studio
+                                      element: div
+                                      align: left
+                                      color: white
+                                      uesio.styleTokens:
+                                        root:
+                                          - pl-6
                                 uesio.styleTokens:
                                   root:
                                     - pl-8
-                                    - flex
-                                    - justify-center
                           uesio.styleTokens:
                             root:
-                              - pt-36
+                              - pt-14
                     uesio.styleTokens:
                       root:
                         - pl-36

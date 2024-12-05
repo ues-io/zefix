@@ -9,39 +9,46 @@ definition:
           - uesio/io.grid:
               uesio.variant: uesio/io.one_column
               uesio.styleTokens:
-                root: []
+                root:
+                  - bg-white
+                  - rounded-xl
+                  - border-red-800
               items:
                 - uesio/io.box:
                     components:
-                      - uesio/io.image:
-                          loading: lazy
-                          uesio.variant: ""
-                          file: demo/zefix.thirty3logo
-                          uesio.styleTokens:
-                            root: []
-                    uesio.styleTokens:
-                      root:
-                        - w-96
-                        - bg-black
-                        - p-6
-                - uesio/io.box:
-                    components:
-                      - uesio/core.view:
-                          view: uesio/core.loginarea
-                      - uesio/io.image:
-                          loading: lazy
-                          uesio.variant: ""
-                          file: demo/zefix.uesio_logo_2
+                      - uesio/io.text:
+                          text: Private Banking with AI
+                          element: div
+                          align: center
                           uesio.styleTokens:
                             root:
-                              - pt-10
-                              - pl-24
-                          height: 80
+                              - pb-8
+                      - uesio/core.view:
+                          view: uesio/core.loginarea
+                      - uesio/io.box:
+                          components:
+                            - uesio/io.image:
+                                loading: lazy
+                                uesio.variant: ""
+                                file: uesio/core.logo
+                                uesio.styleTokens:
+                                  root: []
+                                height: 100
+                                signals:
+                                  - signal: route/REDIRECT
+                                    path: https://ues.io
+                                    newtab: true
+                          uesio.styleTokens:
+                            root:
+                              - mt-6
+                              - flex
+                              - justify-center
                     uesio.styleTokens:
                       root:
                         - w-96
-                        - border
                         - p-7
+                        - shadow-inner
+                        - drop-shadow-xl
         uesio.styleTokens:
           root:
             - min-h-full
